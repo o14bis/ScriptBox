@@ -255,7 +255,7 @@ function Index() {
 
       {/* Donation Section */}
       <section className="relative z-10 px-6 pb-20 animate-slide-up [animation-delay:700ms]">
-        <div className="max-w-md mx-auto p-6 rounded-3xl bg-white/5 border border-white/5">
+        <div className="max-w-md mx-auto p-6 rounded-3xl bg-green-500/10 border border-green-500/20 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
           <div className="flex items-center gap-2 mb-5">
             <span className="size-1.5 rounded-full bg-accent animate-pulse"></span>
             <h3 className="font-display text-xl leading-none uppercase tracking-tight">
@@ -266,11 +266,11 @@ function Index() {
             Quer me ajudar a manter o site e a comprar presentes pra minha namorada? Escaneia o QR Code ou usa o link abaixo!
           </p>
           <div className="flex flex-col items-center gap-5">
-            <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)] bg-white">
+            <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)]">
               <img
                 src={qrcodeImage.url}
                 alt="QR Code para doação via pixgg.com/14bis"
-                className="w-48 h-48 object-contain"
+                className="w-full h-auto object-contain"
                 loading="lazy"
               />
             </div>
