@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import creatorImage from "../assets/creator.jpg.asset.json";
 import logoImage from "../assets/scriptbox-logo.png.asset.json";
+import qrcodeImage from "../assets/pixgg-qrcode.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -242,20 +243,58 @@ function Index() {
             </div>
           </div>
           <blockquote className="text-sm text-pretty text-foreground/80 leading-relaxed font-medium">
-            &ldquo;Opa, tudo bem? Eu sou o 14 bis, criador desse site e fundador da
+            Opa, tudo bem? Eu sou o 14 bis, criador desse site e fundador da
             ScriptBox. Bem, eu fiz esse site com a intenção de facilitar o acesso
             de vários sites diferentes, pq antes eram VÁRIOS sites, e era muito
             difícil de achar a url de cada um deles. Apesar de a maioria dos
             servers terem juntado tudo em um só site, achei legal fazer ele, pq
-            é um &ldquo;sonho&rdquo; meu participar dessa comunidade kk&rdquo;
+            é um sonho meu participar dessa comunidade kk
           </blockquote>
-          <div className="mt-8 pt-6 border-t border-white/5 flex justify-center">
-            <p className="text-[10px] font-mono text-muted-foreground/50">
-              © {new Date().getFullYear()} SCRIPTBOX HUB
-            </p>
-          </div>
         </div>
       </footer>
+
+      {/* Donation Section */}
+      <section className="relative z-10 px-6 pb-20 animate-slide-up [animation-delay:700ms]">
+        <div className="max-w-md mx-auto p-6 rounded-3xl bg-white/5 border border-white/5">
+          <div className="flex items-center gap-2 mb-5">
+            <span className="size-1.5 rounded-full bg-accent animate-pulse"></span>
+            <h3 className="font-display text-xl leading-none uppercase tracking-tight">
+              Canto de Doações
+            </h3>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+            Quer me ajudar a manter o site e a comprar presentes pra minha namorada? Escaneia o QR Code ou usa o link abaixo!
+          </p>
+          <div className="flex flex-col items-center gap-5">
+            <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)] bg-white">
+              <img
+                src={qrcodeImage.url}
+                alt="QR Code para doação via pixgg.com/14bis"
+                className="w-48 h-48 object-contain"
+                loading="lazy"
+              />
+            </div>
+            <a
+              href="https://pixgg.com/14bis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-lg bg-accent text-accent-foreground font-bold text-xs uppercase tracking-wide transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <ExternalLinkIcon className="size-3" />
+              ou acesse esse link!
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer copyright */}
+      <div className="relative z-10 px-6 pb-8 animate-slide-up [animation-delay:800ms]">
+        <div className="max-w-md mx-auto pt-6 border-t border-white/5 flex justify-center">
+          <p className="text-[10px] font-mono text-muted-foreground/50">
+            © {new Date().getFullYear()} SCRIPTBOX HUB
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
