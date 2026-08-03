@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import creatorImage from "../assets/creator.jpg.asset.json";
+import logoImage from "../assets/scriptbox-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
