@@ -48,11 +48,117 @@ function ExternalLinkIcon({ className }: { className?: string }) {
   );
 }
 
+type Company = {
+  name: string;
+  tag: string;
+  tagAccent?: boolean;
+  description: string;
+  site: { label: string; href: string };
+  discord?: string;
+  delay: string;
+};
+
+const companies: Company[] = [
+  {
+    name: "Plataform Destroyer",
+    tag: "ALL-IN-ONE",
+    description: "Site inteiro que reúne a maioria das plataformas de automação.",
+    site: { label: "SITE", href: "https://platformdestroyer.fun/" },
+    discord: "https://discord.gg/platformdestroyer",
+    delay: "100ms",
+  },
+  {
+    name: "OpenFuture",
+    tag: "MULTI-HUB",
+    description: "Site completo de scripts para as principais plataformas.",
+    site: { label: "WEBSITE", href: "https://openfuture.lol/" },
+    discord: "https://discord.gg/openfuture",
+    delay: "200ms",
+  },
+  {
+    name: "Zeta",
+    tag: "CORE HUB",
+    description: "Soluções integradas para as principais plataformas educacionais.",
+    site: { label: "PORTAL", href: "https://zetazerohub.xyz/" },
+    discord: "https://discord.gg/DUwWasTxk",
+    delay: "300ms",
+  },
+  {
+    name: "MoonScripts",
+    tag: "TAREFASP",
+    tagAccent: true,
+    description: "Organização que prefere sites separados. Atualmente ativa com o TarefaSP.",
+    site: { label: "DORITUS CLOUD", href: "https://doritus.cloud/" },
+    delay: "400ms",
+  },
+];
+
+function CompanyCard({ company }: { company: Company }) {
+  return (
+    <article
+      className="group relative flex flex-col p-5 rounded-2xl bg-card border border-border hover:border-accent/40 transition-colors duration-300 animate-slide-up"
+      style={{ animationDelay: company.delay }}
+    >
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2 mb-3">
+        <h2 className="min-w-0 font-bold text-lg text-balance">{company.name}</h2>
+        <span
+          className={`shrink-0 font-mono text-[10px] px-2 py-1 rounded ${
+            company.tagAccent ? "bg-accent/20 text-accent" : "bg-white/5"
+          }`}
+        >
+          {company.tag}
+        </span>
+      </div>
+      <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+        {company.description}
+      </p>
+      <div className={`grid gap-3 ${company.discord ? "grid-cols-2" : "grid-cols-1"}`}>
+        <a
+          href={company.site.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5"
+        >
+          <ExternalLinkIcon className="size-3" />
+          {company.site.label}
+        </a>
+        {company.discord && (
+          <a
+            href={company.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-card border border-border text-foreground font-semibold text-xs hover:bg-white/5 transition-colors"
+          >
+            <DiscordIcon className="size-3" />
+            DISCORD
+          </a>
+        )}
+      </div>
+    </article>
+  );
+}
+
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground bg-grid">
+    <div className="relative min-h-screen bg-background text-foreground bg-grid overflow-hidden">
+      {/* Animated aurora background */}
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+        <div
+          className="aurora-blob size-[60vmax] -top-[20vmax] -left-[15vmax] bg-primary"
+          style={{ animationDuration: "24s" }}
+        />
+        <div
+          className="aurora-blob size-[50vmax] top-[30vmax] -right-[15vmax] bg-accent"
+          style={{ animationDuration: "30s", animationDelay: "-8s" }}
+        />
+        <div
+          className="aurora-blob size-[40vmax] bottom-[-10vmax] left-[20vmax] bg-highlight"
+          style={{ animationDuration: "36s", animationDelay: "-16s" }}
+        />
+      </div>
+
       {/* Hero Section */}
-      <header className="pt-16 pb-12 px-6 flex flex-col items-center text-center animate-slide-up">
+      <header className="relative z-10 pt-16 pb-12 px-6 flex flex-col items-center text-center animate-slide-up">
         <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-accent/20 bg-accent/5">
           <span className="size-1.5 rounded-full bg-accent animate-pulse"></span>
           <span className="text-[10px] font-mono uppercase tracking-widest text-accent">
@@ -75,143 +181,47 @@ function Index() {
       </header>
 
       {/* Content Grid */}
-      <main className="px-5 space-y-4 max-w-md mx-auto">
-        {/* Platform Destroyer */}
-        <article className="group relative p-5 rounded-2xl bg-card border border-border hover:border-accent/40 transition-colors duration-300 animate-slide-up [animation-delay:100ms]">
-          <div className="flex justify-between items-start mb-3">
-            <h2 className="font-bold text-lg">Plataform Destroyer</h2>
-            <span className="font-mono text-[10px] bg-white/5 px-2 py-1 rounded">
-              ALL-IN-ONE
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-            Site inteiro que reúne a maioria das plataformas de automação.
-          </p>
-          <div className="grid grid-cols-2 gap-3">
-            <a
-              href="https://platformdestroyer.fun/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95"
-            >
-              <ExternalLinkIcon className="size-3" />
-              SITE
-            </a>
-            <a
-              href="https://discord.gg/platformdestroyer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-card border border-border text-foreground font-semibold text-xs hover:bg-white/5 transition-colors"
-            >
-              <DiscordIcon className="size-3" />
-              DISCORD
-            </a>
-          </div>
-        </article>
+      <main className="relative z-10 px-5 max-w-md md:max-w-3xl lg:max-w-6xl mx-auto">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 items-stretch">
+          {companies.map((company) => (
+            <CompanyCard key={company.name} company={company} />
+          ))}
+        </div>
 
-        {/* OpenFuture */}
-        <article className="group relative p-5 rounded-2xl bg-card border border-border hover:border-accent/40 transition-colors duration-300 animate-slide-up [animation-delay:200ms]">
-          <div className="flex justify-between items-start mb-3">
-            <h2 className="font-bold text-lg text-balance">OpenFuture</h2>
-            <span className="font-mono text-[10px] bg-white/5 px-2 py-1 rounded">
-              MULTI-HUB
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-            Site completo de scripts e repositório de apostilas e livros didáticos.
-          </p>
-          <div className="space-y-2">
-            <div className="grid grid-cols-2 gap-3">
-              <a
-                href="https://openfuture.lol/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95"
-              >
-                <ExternalLinkIcon className="size-3" />
-                WEBSITE
-              </a>
-              <a
-                href="https://discord.gg/openfuture"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-card border border-border text-foreground font-semibold text-xs hover:bg-white/5 transition-colors"
-              >
-                <DiscordIcon className="size-3" />
-                DISCORD
-              </a>
+        {/* Apostilas — faixa separada */}
+        <section
+          className="mt-4 rounded-2xl border border-accent/25 bg-accent/5 p-5 animate-slide-up"
+          style={{ animationDelay: "500ms" }}
+        >
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-4 md:flex md:items-center md:justify-between">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
+                  OpenFuture
+                </span>
+                <span className="font-mono text-[10px] text-muted-foreground">// extra</span>
+              </div>
+              <h2 className="mt-1 font-bold text-lg">Apostilas &amp; Livros Didáticos</h2>
+              <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                Repositório com a maioria das apostilas e livros fornecidos pelas escolas.
+              </p>
             </div>
             <a
               href="https://apostilas.nejizzuki.xyz/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-accent/10 border border-accent/20 text-accent font-semibold text-[11px] uppercase tracking-wide transition-colors hover:bg-accent/20"
-            >
-              Apostilas & Livros
-            </a>
-          </div>
-        </article>
-
-        {/* Zeta */}
-        <article className="group relative p-5 rounded-2xl bg-card border border-border hover:border-accent/40 transition-colors duration-300 animate-slide-up [animation-delay:300ms]">
-          <div className="flex justify-between items-start mb-3">
-            <h2 className="font-bold text-lg">Zeta</h2>
-            <span className="font-mono text-[10px] bg-white/5 px-2 py-1 rounded">
-              CORE HUB
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-            Soluções integradas para as principais plataformas educacionais.
-          </p>
-          <div className="grid grid-cols-2 gap-3">
-            <a
-              href="https://zetazerohub.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95"
+              className="flex shrink-0 items-center justify-center gap-2 py-3 px-6 rounded-lg bg-accent text-accent-foreground font-bold text-xs uppercase tracking-wide transition-transform active:scale-95 hover:-translate-y-0.5"
             >
               <ExternalLinkIcon className="size-3" />
-              PORTAL
-            </a>
-            <a
-              href="https://discord.gg/DUwWasTxk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-card border border-border text-foreground font-semibold text-xs hover:bg-white/5 transition-colors"
-            >
-              <DiscordIcon className="size-3" />
-              DISCORD
+              Acessar apostilas
             </a>
           </div>
-        </article>
-
-        {/* MoonScripts */}
-        <article className="group relative p-5 rounded-2xl bg-card border border-border hover:border-accent/40 transition-colors duration-300 animate-slide-up [animation-delay:400ms]">
-          <div className="flex justify-between items-start mb-3">
-            <h2 className="font-bold text-lg">MoonScripts</h2>
-            <span className="font-mono text-[10px] bg-accent/20 text-accent px-2 py-1 rounded">
-              TAREFASP
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-            Organização que prefere sites separados. Atualmente ativa com o TarefaSP.
-          </p>
-          <div className="grid grid-cols-1 gap-3">
-            <a
-              href="https://doritus.cloud/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-3 rounded-lg bg-foreground text-background font-bold text-xs shadow-[0_0_20px_rgba(0,255,255,0.1)] transition-transform active:scale-95"
-            >
-              <ExternalLinkIcon className="size-3" />
-              DORITUS CLOUD
-            </a>
-          </div>
-        </article>
+        </section>
       </main>
 
+
       {/* Credits Section */}
-      <footer className="mt-20 px-6 pb-20 animate-slide-up [animation-delay:600ms]">
+      <footer className="relative z-10 mt-20 px-6 pb-20 animate-slide-up [animation-delay:600ms]">
         <div className="max-w-md mx-auto p-6 rounded-3xl bg-white/5 border border-white/5">
           <div className="flex items-center gap-4 mb-6">
             <div className="size-14 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
