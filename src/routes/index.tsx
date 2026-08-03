@@ -266,11 +266,11 @@ function Index() {
             Quer me ajudar a manter o site e a comprar presentes pra minha namorada? Escaneia o QR Code ou usa o link abaixo!
           </p>
           <div className="flex flex-col items-center gap-5">
-            <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)]">
+            <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)] bg-transparent">
               <img
                 src={qrcodeImage.url}
                 alt="QR Code para doação via pixgg.com/14bis"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain mix-blend-multiply"
                 loading="lazy"
               />
             </div>
