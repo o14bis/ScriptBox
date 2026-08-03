@@ -59,9 +59,16 @@ function Index() {
             Database Active
           </span>
         </div>
-        <h1 className="font-display text-7xl uppercase tracking-tighter animate-shimmer">
-          Script Box
-        </h1>
+        <div className="flex items-center justify-center gap-3">
+          <img
+            src={logoImage.url}
+            alt="Logo da Script Box"
+            className="size-16 sm:size-20 object-contain drop-shadow-[0_0_24px_rgba(153,41,234,0.55)]"
+          />
+          <h1 className="font-display text-6xl sm:text-7xl uppercase tracking-tighter animate-shimmer">
+            Script Box
+          </h1>
+        </div>
         <p className="mt-4 font-mono text-sm text-muted-foreground">
           De fã. <span className="text-foreground/40">//</span> Para fãs
         </p>
