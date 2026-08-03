@@ -172,7 +172,13 @@
 }
 
 @utility animate-shimmer {
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-foreground) 50%, var(--color-accent) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 35%,
+    var(--color-highlight) 60%,
+    var(--color-primary) 100%
+  );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
