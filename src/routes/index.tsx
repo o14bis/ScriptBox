@@ -142,7 +142,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground bg-grid overflow-hidden">
       {/* Animated aurora background */}
-      <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
         <div
           className="aurora-blob size-[60vmax] -top-[20vmax] -left-[15vmax] bg-primary"
           style={{ animationDuration: "24s" }}
@@ -158,7 +158,7 @@ function Index() {
       </div>
 
       {/* Hero Section */}
-      <header className="pt-16 pb-12 px-6 flex flex-col items-center text-center animate-slide-up">
+      <header className="relative z-10 pt-16 pb-12 px-6 flex flex-col items-center text-center animate-slide-up">
         <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-accent/20 bg-accent/5">
           <span className="size-1.5 rounded-full bg-accent animate-pulse"></span>
           <span className="text-[10px] font-mono uppercase tracking-widest text-accent">
@@ -181,7 +181,7 @@ function Index() {
       </header>
 
       {/* Content Grid */}
-      <main className="px-5 max-w-md md:max-w-3xl lg:max-w-6xl mx-auto">
+      <main className="relative z-10 px-5 max-w-md md:max-w-3xl lg:max-w-6xl mx-auto">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 items-stretch">
           {companies.map((company) => (
             <CompanyCard key={company.name} company={company} />
@@ -221,7 +221,7 @@ function Index() {
 
 
       {/* Credits Section */}
-      <footer className="mt-20 px-6 pb-20 animate-slide-up [animation-delay:600ms]">
+      <footer className="relative z-10 mt-20 px-6 pb-20 animate-slide-up [animation-delay:600ms]">
         <div className="max-w-md mx-auto p-6 rounded-3xl bg-white/5 border border-white/5">
           <div className="flex items-center gap-4 mb-6">
             <div className="size-14 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
