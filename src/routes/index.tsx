@@ -117,6 +117,14 @@ function CompanyCard({ company }: { company: Company }) {
           {company.tag}
         </span>
       </div>
+      {company.maintenance && (
+        <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-highlight/30 bg-highlight/10 px-2.5 py-1">
+          <span className="size-1.5 rounded-full bg-highlight animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-widest text-highlight">
+            Em manutenção
+          </span>
+        </div>
+      )}
       <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
         {company.description}
       </p>
@@ -125,11 +133,16 @@ function CompanyCard({ company }: { company: Company }) {
           href={company.site.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5"
+          className={`flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5 ${
+            company.maintenance
+              ? "bg-white/10 text-muted-foreground border border-border"
+              : "bg-foreground text-background"
+          }`}
         >
           <ExternalLinkIcon className="size-3" />
           {company.site.label}
         </a>
+
         {company.discord && (
           <a
             href={company.discord}
