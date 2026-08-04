@@ -60,6 +60,7 @@ type Company = {
   description: string;
   site: { label: string; href: string };
   discord?: string;
+  maintenance?: boolean;
   delay: string;
 };
 
@@ -93,10 +94,12 @@ const companies: Company[] = [
     tag: "TAREFASP",
     tagAccent: true,
     description: "Organização que prefere sites separados. Atualmente ativa com o TarefaSP.",
-    site: { label: "DORITUS CLOUD", href: "https://doritus.cloud/" },
+    site: { label: "Doritus", href: "https://doritus.cloud/" },
+    maintenance: true,
     delay: "400ms",
   },
 ];
+
 
 function CompanyCard({ company }: { company: Company }) {
   return (
