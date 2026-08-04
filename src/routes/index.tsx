@@ -9,6 +9,9 @@ import creatorImage from "../assets/creator.jpg.asset.json";
 import logoImage from "../assets/scriptbox-logo.png.asset.json";
 import qrcodeImage from "../assets/pixgg-qrcode.png.asset.json";
 
+export { logo };
+export { pfp };
+export { qrcode };
 
 export const Route = createFileRoute("/")({
   head: () => ({
