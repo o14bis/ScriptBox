@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Menu, X, Home, Globe, Github, ShieldAlert } from "lucide-react";
+import { toast } from "sonner";
 import creatorImage from "../assets/creator.jpg.asset.json";
 import logoImage from "../assets/scriptbox-logo.png.asset.json";
 import qrcodeImage from "../assets/pixgg-qrcode.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,6 +60,7 @@ type Company = {
   description: string;
   site: { label: string; href: string };
   discord?: string;
+  maintenance?: boolean;
   delay: string;
 };
 
@@ -89,10 +94,12 @@ const companies: Company[] = [
     tag: "TAREFASP",
     tagAccent: true,
     description: "Organização que prefere sites separados. Atualmente ativa com o TarefaSP.",
-    site: { label: "DORITUS CLOUD", href: "https://doritus.cloud/" },
+    site: { label: "Doritus", href: "https://doritus.cloud/" },
+    maintenance: true,
     delay: "400ms",
   },
 ];
+
 
 function CompanyCard({ company }: { company: Company }) {
   return (
@@ -110,6 +117,14 @@ function CompanyCard({ company }: { company: Company }) {
           {company.tag}
         </span>
       </div>
+      {company.maintenance && (
+        <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-highlight/30 bg-highlight/10 px-2.5 py-1">
+          <span className="size-1.5 rounded-full bg-highlight animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-widest text-highlight">
+            Em manutenção
+          </span>
+        </div>
+      )}
       <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
         {company.description}
       </p>
@@ -118,11 +133,16 @@ function CompanyCard({ company }: { company: Company }) {
           href={company.site.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-foreground text-background font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5"
+          className={`flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5 ${
+            company.maintenance
+              ? "bg-white/10 text-muted-foreground border border-border"
+              : "bg-foreground text-background"
+          }`}
         >
           <ExternalLinkIcon className="size-3" />
           {company.site.label}
         </a>
+
         {company.discord && (
           <a
             href={company.discord}
@@ -139,9 +159,101 @@ function CompanyCard({ company }: { company: Company }) {
   );
 }
 
+function DisclaimerDialog() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="disclaimer-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-5 bg-background/80 backdrop-blur-sm animate-slide-up"
+    >
+      <div className="w-full max-w-md rounded-3xl border border-accent/30 bg-card p-6 shadow-[0_0_60px_rgba(153,41,234,0.25)]">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 items-center justify-center rounded-full bg-accent/15 text-accent">
+            <ShieldAlert className="size-5" />
+          </span>
+          <h2
+            id="disclaimer-title"
+            className="font-display text-2xl uppercase tracking-tight"
+          >
+            Aviso importante
+          </h2>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Nenhum dos scripts, sites ou automações listados aqui são meus. Todos
+          pertencem a organizações independentes, com seus próprios servidores,
+          sites, donos e programadores.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          A Script Box é apenas um agrupamento de links feito por fã, para fãs —
+          sem qualquer vínculo com os projetos citados.
+        </p>
+        <button
+          onClick={() => setOpen(false)}
+          className="mt-6 w-full rounded-lg bg-accent px-6 py-3 text-xs font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:-translate-y-0.5 active:scale-95"
+        >
+          Entendi
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SiteMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="fixed top-4 right-4 z-40">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? "Fechar opções" : "Abrir opções"}
+        aria-expanded={open}
+        className="flex size-11 items-center justify-center rounded-xl border border-border bg-card/80 backdrop-blur text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+      >
+        {open ? <X className="size-5" /> : <Menu className="size-5" />}
+      </button>
+      {open && (
+        <nav className="absolute right-0 mt-2 w-56 overflow-hidden rounded-2xl border border-border bg-card/95 backdrop-blur p-2 shadow-[0_0_40px_rgba(0,0,0,0.6)] animate-slide-up">
+          <button
+            onClick={() => {
+              setOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-white/5"
+          >
+            <Home className="size-4 text-accent" />
+            Home
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false);
+              toast("em desenvolvimento :v");
+            }}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-white/5"
+          >
+            <Globe className="size-4 text-highlight" />
+            Sites Unblocker
+          </button>
+        </nav>
+      )}
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground bg-grid overflow-hidden">
+      <DisclaimerDialog />
+      <SiteMenu />
+
       {/* Animated aurora background */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
         <div
@@ -233,7 +345,7 @@ function Index() {
                 loading="lazy"
               />
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="font-display text-xl leading-none uppercase tracking-tight">
                 14 Bis
               </h3>
@@ -241,6 +353,16 @@ function Index() {
                 Fundador / Criador
               </p>
             </div>
+            <a
+              href="https://github.com/o14bis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub do 14 Bis"
+              className="ml-auto flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+            >
+              <Github className="size-4" />
+            </a>
+
           </div>
           <blockquote className="text-sm text-pretty text-foreground/80 leading-relaxed font-medium">
             Opa, tudo bem? Eu sou o 14 bis, criador desse site e fundador da
