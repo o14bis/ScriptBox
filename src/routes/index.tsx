@@ -253,7 +253,7 @@ function Index() {
                 loading="lazy"
               />
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="font-display text-xl leading-none uppercase tracking-tight">
                 14 Bis
               </h3>
@@ -261,6 +261,16 @@ function Index() {
                 Fundador / Criador
               </p>
             </div>
+            <a
+              href="https://github.com/o14bis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub do 14 Bis"
+              className="ml-auto flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+            >
+              <Github className="size-4" />
+            </a>
+
           </div>
           <blockquote className="text-sm text-pretty text-foreground/80 leading-relaxed font-medium">
             Opa, tudo bem? Eu sou o 14 bis, criador desse site e fundador da
