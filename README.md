@@ -1,86 +1,66 @@
-# ScriptBox Hub
+<div align="center">
 
-Quero fazer um site cujo no qual seja um agrupamento de sites de Scripts (hacks)/Automações de plataformas do sala do futuro.
+<img src="assets-readme/Logo no bg.png" width="180" alt="Script Box Logo">
 
+# Script Box
 
+### De fã. Para fãs.
 
-O nome dele é Script Box, abaixo do título, coloque a frase (no qual é o slogan do site) "De fã. Para fãs"
+Scripts, tutoriais e utilidades para plataformas educacionais,
+reunidos em um único lugar.
 
+<br>
 
+![GitHub last commit](https://img.shields.io/github/last-commit/o14bis/ScriptBox?style=for-the-badge&color=7A2E2A)
+![GitHub stars](https://img.shields.io/github/stars/o14bis/ScriptBoxO?style=for-the-badge&color=7A2E2A)
+![GitHub issues](https://img.shields.io/github/issues/o14bis/ScriptBox?style=for-the-badge&color=7A2E2A)
 
-Nesse site, vai ter várias divisões:
+</div>
 
-A primeira divisão é sobre Scripts para plataformas que estão em site
+---
 
-Nela vai ter 4 abas, com "empresas" de automações, elas são:
+# 📖 Sobre
 
+A **Script Box** nasceu com um objetivo simples:
 
+> **Reunir scripts, tutoriais e ferramentas úteis em um único lugar.**
 
-Plataform Destroyer:
+Em vez de procurar dezenas de links diferentes, a Script Box organiza tudo em uma interface simples, rápida e fácil de usar.
 
-Site: https://platformdestroyer.fun/
+O projeto está em constante evolução, recebendo novas funcionalidades, melhorias e novos conteúdos sempre que possível.
 
-Discord: https://discord.gg/platformdestroyer
+---
 
-Site inteiro que reúne a maioria das plataformas
+# ✨ O que você encontra?
 
+- 📦 Biblioteca de Scripts
+- ⭐ Interface moderna
+- 🚀 Atualizações frequentes
 
+---
 
-OpenFuture:
+# ❤️ Projeto da comunidade
 
-Site: https://openfuture.lol/
+A Script Box é um projeto criado **de fã para fãs**.
 
-Assim como a Plataform Destroyer, tem um site inteiro que reúne a maioria das plataformas
+Caso encontre algum problema, tenha alguma ideia ou queira contribuir, sinta-se à vontade para abrir uma *Issue*.
 
-Apostilas: https://apostilas.nejizzuki.xyz/
+Toda sugestão é bem-vinda.
 
-Site que reúne a maioria, se não, todas as apostilas e livros didáticos fornecido pelas escolas
+---
 
-Discord:  https://discord.gg/openfuture
+<div align="center">
 
+### ⭐ Se este projeto te ajudou, considere deixar uma estrela!
 
+**De fã. Para fãs.**
 
-Zeta:
+<br>
 
-Site: https://zetazerohub.xyz/
+<img src="assets-readme/14's pfp.png" width="72" style="border-radius:50%;" />
 
-Assim como o site principal da OpenFuture e da Plataform Destroyer, é um site inteiro que reúne a maioria das plataformas
+### Desenvolvido por **14 bis**
 
-Discord: https://discord.gg/DUwWasTxk
+*"Living proof that bad ideas sometimes work"*
 
-
-
-MoonScripts:
-
-A MoonScripts é uma organização que, ao contrário das demais, prefere se manter com sites separados, e, infelizmente, só tem um site online deles, o resto ou é no Discord, com bots, e ainda por cima estão offline
-
-Site: https://doritus.cloud/
-
-Site para fazer suas tarefas do TarefaSP
-
-
-
-No final do site, coloque uma aba de créditos falando sobre mim, com essa foto da esquerda e a seguinte frase: 
-
-"Opa, tudo bem? Eu sou o 14 bis, criador desse site e fundador da ScriptBox. Bem, eu fiz esse site com a intenção de facilitar o acesso de vários sites diferentes, pq antes eram VÁRIOS sites, e era muito difícil de achar a url de cada um deles. Apesar de a maioria dos servers terem juntado tudo em um só site, achei legal fazer ele, pq é um "sonho" meu participar dessa comunidade kk"
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/14e3a4bb-e4be-49b4-bfa7-201e5e790387).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+</div>
