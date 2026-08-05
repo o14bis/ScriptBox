@@ -1,17 +1,10 @@
-import logo from "src/assets/Logo.png"
-import pfp from "src/assets/Pfp.jpg"
-import qrcode from "src/assets/pixgg-qrcode.png"
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Home, Globe, Github, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
-import creatorImage from "../assets/creator.jpg.asset.json";
-import logoImage from "../assets/scriptbox-logo.png.asset.json";
-import qrcodeImage from "../assets/pixgg-qrcode.png.asset.json";
-
-export { logo };
-export { pfp };
-export { qrcode };
+import logo from "../assets/Logo.png";
+import pfp from "../assets/Pfp.jpg";
+import qrcode from "../assets/pixgg-qrcode.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -286,7 +279,7 @@ function Index() {
         </div>
         <div className="flex items-center justify-center gap-3">
           <img
-            src=src/assets/Logo.png
+            src={logo}
             alt="Logo da Script Box"
             className="size-16 sm:size-20 object-contain drop-shadow-[0_0_24px_rgba(153,41,234,0.55)]"
           />
@@ -345,7 +338,7 @@ function Index() {
           <div className="flex items-center gap-4 mb-6">
             <div className="size-14 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
               <img
-                src=src/assets/Pfp.jpg
+                src={pfp}
                 alt="Foto do 14 Bis"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -396,7 +389,7 @@ function Index() {
           <div className="flex flex-col items-center gap-5">
             <div className="rounded-2xl overflow-hidden border-2 border-accent/30 shadow-[0_0_30px_rgba(255,95,207,0.15)]">
               <img
-                src=src/assets/pixgg-qrcode.png
+                src={qrcode}
                 alt="QR Code para doação via pixgg.com/14bis"
                 className="w-full h-auto object-contain"
                 loading="lazy"
