@@ -1,17 +1,10 @@
-import logo from "src/assets/Logo.png"
-import pfp from "src/assets/Pfp.jpg"
-import qrcode from "src/assets/pixgg-qrcode.png"
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Home, Globe, Github, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
-import creatorImage from "../assets/creator.jpg.asset.json";
-import logoImage from "../assets/scriptbox-logo.png.asset.json";
-import qrcodeImage from "../assets/pixgg-qrcode.png.asset.json";
-
-export { logo };
-export { pfp };
-export { qrcode };
+import logo from "../assets/Logo.png";
+import pfp from "../assets/Pfp.jpg";
+import qrcode from "../assets/pixgg-qrcode.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
