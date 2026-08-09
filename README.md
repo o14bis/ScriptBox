@@ -12,7 +12,7 @@ reunidos em um único lugar.
 <br>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/o14bis/ScriptBox?style=for-the-badge&color=7A2E2A)
-![GitHub stars](https://img.shields.io/github/stars/o14bis/ScriptBoxO?style=for-the-badge&color=7A2E2A)
+![GitHub stars](https://img.shields.io/github/stars/o14bis/ScriptBox?style=for-the-badge&color=7A2E2A)
 ![GitHub issues](https://img.shields.io/github/issues/o14bis/ScriptBox?style=for-the-badge&color=7A2E2A)
 
 </div>
