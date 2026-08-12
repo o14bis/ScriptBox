@@ -258,6 +258,7 @@ function DarkModeDialog() {
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               Copia o código abaixo, cria um favorito novo e cola no campo de URL.
               Depois é só clicar no favorito quando estiver na Sala do Futuro.
+              Funciona tanto no PC quanto em aparelhos móveis.
             </p>
             <button
               onClick={copyBookmarklet}
