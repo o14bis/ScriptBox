@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Home, Globe, Github, ShieldAlert } from "lucide-react";
+import { Menu, X, Home, Globe, Github, ShieldAlert, Moon } from "lucide-react";
 import { toast } from "sonner";
 import logo from "../assets/Logo.png";
 import pfp from "../assets/Pfp.jpg";
