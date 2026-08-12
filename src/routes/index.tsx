@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Home, Globe, Github, ShieldAlert } from "lucide-react";
+import { Menu, X, Home, Globe, Github, ShieldAlert, Moon } from "lucide-react";
 import { toast } from "sonner";
 import logo from "../assets/Logo.png";
 import pfp from "../assets/Pfp.jpg";
@@ -156,12 +156,13 @@ function CompanyCard({ company }: { company: Company }) {
   );
 }
 
-function DisclaimerDialog() {
-  const [open, setOpen] = useState(false);
+function DisclaimerDialog({ onClose }: { onClose: () => void }) {
+  const [open, setOpen] = useState(true);
 
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+  const handleClose = () => {
+    setOpen(false);
+    onClose();
+  };
 
   if (!open) return null;
 
@@ -194,10 +195,102 @@ function DisclaimerDialog() {
           sem qualquer vínculo com os projetos citados.
         </p>
         <button
-          onClick={() => setOpen(false)}
+          onClick={handleClose}
           className="mt-6 w-full rounded-lg bg-accent px-6 py-3 text-xs font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:-translate-y-0.5 active:scale-95"
         >
           Entendi
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function DarkModeDialog() {
+  const [open, setOpen] = useState(false);
+  const [copiedBookmarklet, setCopiedBookmarklet] = useState(false);
+
+  const bookmarkletCode = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/o14bis/AfterClass@main/empresa%20intu.js?t='+Date.now();s.onerror=function(){alert('Falhou ao carregar o script.');};document.body.appendChild(s);})();";
+
+  useEffect(() => {
+    const timer = setTimeout(() => setOpen(true), 400);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const copyBookmarklet = async () => {
+    try {
+      await navigator.clipboard.writeText(bookmarkletCode);
+      setCopiedBookmarklet(true);
+      setTimeout(() => setCopiedBookmarklet(false), 2000);
+    } catch {
+      toast("Não foi possível copiar automaticamente");
+    }
+  };
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="darkmode-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-5 bg-background/80 backdrop-blur-sm animate-slide-up"
+    >
+      <div className="w-full max-w-md rounded-3xl border border-highlight/30 bg-card p-6 shadow-[0_0_60px_rgba(250,235,146,0.15)]">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 items-center justify-center rounded-full bg-highlight/15 text-highlight">
+            <Moon className="size-5" />
+          </span>
+          <h2
+            id="darkmode-title"
+            className="font-display text-2xl uppercase tracking-tight"
+          >
+            Modo escuro
+          </h2>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Fiz um script pra deixar a Sala do Futuro em modo escuro. Tem duas
+          formas de usar:
+        </p>
+
+        <div className="mt-5 space-y-4">
+          <div className="rounded-2xl border border-border bg-white/5 p-4">
+            <h3 className="font-bold text-sm mb-2">1. Bookmarklet (manual)</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+              Copia o código abaixo, cria um favorito novo e cola no campo de URL.
+              Depois é só clicar no favorito quando estiver na Sala do Futuro.
+            </p>
+            <button
+              onClick={copyBookmarklet}
+              className="w-full rounded-lg bg-card border border-border px-4 py-2.5 text-xs font-mono text-foreground break-all transition-colors hover:border-highlight/50 hover:bg-white/5"
+            >
+              {copiedBookmarklet ? "Copiado!" : bookmarkletCode}
+            </button>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-white/5 p-4">
+            <h3 className="font-bold text-sm mb-2">2. Automático (Tampermonkey / Violentmonkey)</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+              Pra aplicar automaticamente sempre que abrir a Sala do Futuro,
+              instala a extensão Tampermonkey ou Violentmonkey e cola o raw do
+              user.js nela.
+            </p>
+            <a
+              href="https://raw.githubusercontent.com/o14bis/AfterClass/refs/heads/main/empresa%20intu.js"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full rounded-lg bg-highlight text-background px-4 py-2.5 text-xs font-bold uppercase tracking-wide transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <ExternalLinkIcon className="size-3" />
+              Abrir raw do user.js
+            </a>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setOpen(false)}
+          className="mt-6 w-full rounded-lg bg-accent px-6 py-3 text-xs font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:-translate-y-0.5 active:scale-95"
+        >
+          Fechar
         </button>
       </div>
     </div>
@@ -246,9 +339,12 @@ function SiteMenu() {
 }
 
 function Index() {
+  const [showDarkMode, setShowDarkMode] = useState(false);
+
   return (
     <div className="relative min-h-screen bg-background text-foreground bg-grid overflow-hidden">
-      <DisclaimerDialog />
+      <DisclaimerDialog onClose={() => setShowDarkMode(true)} />
+      {showDarkMode && <DarkModeDialog />}
       <SiteMenu />
 
       {/* Animated aurora background */}
