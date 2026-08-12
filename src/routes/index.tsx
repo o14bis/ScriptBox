@@ -339,9 +339,12 @@ function SiteMenu() {
 }
 
 function Index() {
+  const [showDarkMode, setShowDarkMode] = useState(false);
+
   return (
     <div className="relative min-h-screen bg-background text-foreground bg-grid overflow-hidden">
-      <DisclaimerDialog />
+      <DisclaimerDialog onClose={() => setShowDarkMode(true)} />
+      {showDarkMode && <DarkModeDialog />}
       <SiteMenu />
 
       {/* Animated aurora background */}
