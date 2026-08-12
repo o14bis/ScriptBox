@@ -57,9 +57,9 @@ type Company = {
   tag: string;
   tagAccent?: boolean;
   description: string;
-  site: { label: string; href: string };
+  site?: { label: string; href: string };
   discord?: string;
-  maintenance?: boolean;
+  status?: string;
   delay: string;
 };
 
@@ -90,11 +90,11 @@ const companies: Company[] = [
   },
   {
     name: "MoonScripts",
-    tag: "TAREFASP",
+    tag: "BOTS",
     tagAccent: true,
-    description: "Organização que prefere sites separados. Atualmente ativa com o TarefaSP.",
-    site: { label: "Doritus", href: "https://doritus.cloud/" },
-    maintenance: true,
+    description: "Migrou todos os scripts para bots no Discord. Atualmente com: Redação Paulista, Matific e Elefante Letrado.",
+    discord: "https://discord.gg/moon-scripts-tm-1382157718965456956",
+    status: "Apenas Discord",
     delay: "400ms",
   },
 ];
@@ -116,31 +116,29 @@ function CompanyCard({ company }: { company: Company }) {
           {company.tag}
         </span>
       </div>
-      {company.maintenance && (
-        <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-highlight/30 bg-highlight/10 px-2.5 py-1">
-          <span className="size-1.5 rounded-full bg-highlight animate-pulse" />
-          <span className="font-mono text-[10px] uppercase tracking-widest text-highlight">
-            Em manutenção
+      {company.status && (
+        <div className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1">
+          <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
+            {company.status}
           </span>
         </div>
       )}
       <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
         {company.description}
       </p>
-      <div className={`grid gap-3 ${company.discord ? "grid-cols-2" : "grid-cols-1"}`}>
-        <a
-          href={company.site.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5 ${
-            company.maintenance
-              ? "bg-white/10 text-muted-foreground border border-border"
-              : "bg-foreground text-background"
-          }`}
-        >
-          <ExternalLinkIcon className="size-3" />
-          {company.site.label}
-        </a>
+      <div className={`grid gap-3 ${company.site && company.discord ? "grid-cols-2" : "grid-cols-1"}`}>
+        {company.site && (
+          <a
+            href={company.site.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-xs transition-transform active:scale-95 hover:-translate-y-0.5 bg-foreground text-background"
+          >
+            <ExternalLinkIcon className="size-3" />
+            {company.site.label}
+          </a>
+        )}
 
         {company.discord && (
           <a
