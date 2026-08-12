@@ -258,6 +258,7 @@ function DarkModeDialog() {
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               Copia o código abaixo, cria um favorito novo e cola no campo de URL.
               Depois é só clicar no favorito quando estiver na Sala do Futuro.
+              Funciona tanto no PC quanto em aparelhos móveis.
             </p>
             <button
               onClick={copyBookmarklet}
@@ -272,7 +273,8 @@ function DarkModeDialog() {
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               Pra aplicar automaticamente sempre que abrir a Sala do Futuro,
               instala a extensão Tampermonkey ou Violentmonkey e cola o raw do
-              user.js nela.
+              user.js nela. Funciona apenas no PC ou em navegadores compatíveis com
+              essas extensões.
             </p>
             <a
               href="https://raw.githubusercontent.com/o14bis/AfterClass/refs/heads/main/empresa%20intu.js"
